@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Online Grocery Ordering</title>
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+  <script type="text/javascript">
+    function validate() {
+      const pass1 = document.getElementById("pswd").value.trim();
+      const pass2 = document.getElementById("pswd2").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const contact = document.getElementById("phone").value.trim();
+      if (email.trim() == "" || !email.toLowerCase().match(/^\S+@\S+\.\S+$/)) {
+        alert("please enter valid email.")
+        return false;
+        console.log("false");
+      } else if (pass1 !== pass2) {
+        alert("passwords do not match");
+        return false;
+      } else if (contact.length != 10) {
+        alert("enter valid contact");
+        return false;
+      }
+      else {
+        const modal = document.getElementById("success-modal");
+        modal.style.display = "flex";
+        const form = document.querySelector("form");
+        const formData = new FormData(form);
+        const formProps = Object.fromEntries(formData);
+        document.getElementById("modal-cname").innerHTML = "Customer name: " + formProps.cname;
+        document.getElementById("modal-email").innerHTML = "Customer email: " + formProps.email;
+        const cid = Math.floor(Math.random() * 10000);
+        document.getElementById("modal-id").innerHTML = "Customer id: " + cid;
+        localStorage.setItem("id", cid);
+        localStorage.setItem("pass", formProps.pswd);
+        localStorage.setItem("name", formProps.cname);
+        localStorage.setItem("add", formProps.add);
+        localStorage.setItem("contact", formProps.phone);
+        localStorage.setItem("email", formProps.email);
+        return true;
+      }
+    }
+
+    function hideModal() {
+      window.location.href = 'login.html';
+      const modal = document.getElementById("success-modal");
+      modal.style.display = "none";
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="signup">
+      <form onSubmit="event.preventDefault(); validate();" action="#">
+        <label for="chk" aria-hidden="true">Sign up</label>
+        <input type="text" maxlength="50" id="cname" name="cname" placeholder="User name" required="">
+        <input type="email" id="email" name="email" placeholder="Email" required="">
+        <input type="password" minlength="8" id="pswd" name="pswd" placeholder="Password" required="">
+        <input type="password" minlength="8" id="pswd2" name="pswd2" placeholder="Confirm password" required="">
+        <textarea maxlength="100" id="add" name="add" placeholder="Enter Your Address"></textarea>
+        <input type="text" oninput="this.setCustomValidity('')"
+          oninvalid="this.setCustomValidity('Enter valid phone number')" pattern="[1-9]{1}[0-9]{9}" id="phone"
+          name="phone" placeholder="Contact Number">
+        <button class="signup__btn">Sign up</button>
+        
+      </form>
+      <a href="login.html">Already Registered ?</a>
+    </div>
+
+  </div>
+  <div class="success-modal" id="success-modal">
+    <p>Customer Registration Successfull</p>
+    <p id="modal-id"></p>
+    <p id="modal-cname"></p>
+    <p id="modal-email"></p>
+    <button class="success-modal__btn" onclick="hideModal()">OK</button>
+  </div>
+</body>
+
+</html>

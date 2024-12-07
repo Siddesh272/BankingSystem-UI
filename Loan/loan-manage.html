@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Management - ILP Banking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="menu-section">
+            <button id="initiateLoanBtn">Initiate Loan Request</button>
+            <button id="updateLoanBtn">Update Loan Request</button>
+            <button id="cancelLoanBtn">Cancel Loan Request</button>
+        </div>
+
+        <div class="form-section">
+            <h2 id="formTitle">Initiate Loan Request</h2>
+            <form id="loanForm">
+                <div id="acknowledgmentScreen" class="hidden">
+                    <div class="form-group search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="custID" name="custID" placeholder="Customer ID" required>
+                        <button type="button" id="searchBtn">Search</button>
+                    </div>
+                    
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-id-badge"></i>
+                        <input type="text" id="customerSSN" name="customerSSN" placeholder="Customer SSN ID" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="customerName" name="customerName" placeholder="Customer Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-briefcase"></i>
+                        <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-building"></i>
+                        <input type="text" id="employerName" name="employerName" placeholder="Employer Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="employerAddress" name="employerAddress" placeholder="Employer Address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="address" name="address" placeholder="Address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-user-friends"></i>
+                        <select id="maritalStatus" name="maritalStatus" required>
+                            <option value="" disabled selected>Marital Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" id="contactNumber" name="contactNumber" placeholder="Contact Number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <input type="number" id="loanAmount" name="loanAmount" placeholder="Loan Amount" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-calendar-day"></i>
+                        <input type="text" id="loanLength" name="loanLength" placeholder="Length of Loan (Duration)" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                <button type="button" id="submitLoan">Submit Loan Request</button>
+                </div>
+            </div>
+            </form>
+            <div id="confirmMessage"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Grocery Ordering</title>
+    <link rel="stylesheet" href="profile.css">
+    <script type="text/javascript">
+        const activateInput = () => {
+            const elements = document.getElementsByClassName("profile__input");
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].disabled = false;
+            }
+            document.getElementById('save').disabled = false;
+        }
+        const values = {
+            0: localStorage.getItem('name'),
+            1: localStorage.getItem('email'),
+            2: localStorage.getItem('pass'),
+            3: localStorage.getItem('add'),
+            4: localStorage.getItem('contact')
+        };
+        const fetchVal = () => {
+            for (let i = 0; i < 5; i++) {
+                document.getElementById("input" + i).value = values[i];
+            }
+        }
+        setTimeout(fetchVal, 500);
+
+        function validate() {
+            const email = document.getElementById("input1").value.trim();
+            const contact = document.getElementById("input4").value.trim();
+            if (email.trim() == "" || !email.toLowerCase().match(/^\S+@\S+\.\S+$/)) {
+                alert("please enter valid email.")
+                return false;
+                console.log("false");
+            } else if (contact.length != 10) {
+                alert("enter valid contact");
+                return false;
+            }
+            else {
+                const form = document.querySelector("form");
+                const formData = new FormData(form);
+                const formProps = Object.fromEntries(formData);
+                localStorage.setItem("pass", formProps.pswd);
+                localStorage.setItem("name", formProps.cname);
+                localStorage.setItem("add", formProps.add);
+                localStorage.setItem("contact", formProps.contact);
+                localStorage.setItem("email", formProps.email);
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="profile">
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li class="center"><a href="profile.html">Profile</a></li>
+            <li class="upward"><a href="cart.html">Cart</a></li>
+            <li class="forward logout"><a onclick="logout()">Logout</a></li>
+        </ul>
+        <form onsubmit="validate();" class="profile__container">
+
+            <input class="profile__input" id="input0" name="cname" type="text" value="name" disabled>
+            <input class="profile__input" id="input1" name="email" type="email" value="email" disabled>
+            <input class="profile__input" id="input2" name="pswd" type="password" value="pass" disabled>
+            <input class="profile__input" id="input3" name="add" type="address" value="add" disabled>
+            <input class="profile__input" id="input4" name="contact" type="number" value="1234567890" disabled>
+            <div>
+                <button onclick="activateInput()" type="button" class="profile_btn">edit</button>
+                <button class="profile_btn save_btn" type="submit" id="save" disabled="true">save</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Customer</title>
+    <link rel="stylesheet" href="searchcustomer.css">
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <h1>Search for Customer</h1>
+        </header>
+
+        <section id="search-section">
+            <input type="text" id="customer-name-input" placeholder="Enter Customer Name" />
+            <button onclick="searchCustomer()">Search</button>
+            <p id="error-message" class="error"></p>
+        </section>
+
+        <!-- Search Results -->
+        <section id="search-results" style="display:none;">
+            <h2>Customer Details</h2>
+            <div id="customer-details">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 &COPY; Online Grocery Admin Dashboard</p>
+    </footer>
+
+    <script>
+        // function isAdminLoggedIn() {
+        //     // Check if admin is logged in (Example using localStorage, replace with actual logic)
+        //     const isAdmin = localStorage.getItem("adminLoggedIn");
+        //     if (!isAdmin) {
+        //         window.location.href = "admin_login.html";
+        //     }
+        // }
+
+        function searchCustomer() {
+            const customerName = document.getElementById("customer-name-input").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const customerDetailsSection = document.getElementById("customer-details");
+            const searchResults = document.getElementById("search-results");
+
+            // Clear previous results or errors
+            errorMessage.textContent = "";
+            customerDetailsSection.innerHTML = "";
+            searchResults.style.display = "none";
+
+            if (customerName === "") {
+                errorMessage.textContent = "Please enter a customer name.";
+                return;
+            }
+
+            const customersDatabase = [{
+                    customer_id: 1,
+                    customer_name: "Jetashree",
+                    email: "jeta@example.com",
+                    password: "password1",
+                    address: "123 Street",
+                    contact_number: "1234567890"
+                },
+                {
+                    customer_id: 2,
+                    customer_name: "John Doe",
+                    email: "john@example.com",
+                    password: "password2",
+                    address: "456 Avenue",
+                    contact_number: "0987654321"
+                }
+            ];
+
+            // Case-insensitive search using filter and ignoreCase logic
+            const matchedCustomer = customersDatabase.filter(customer =>
+                customer.customer_name.toLowerCase() === customerName.toLowerCase()
+            );
+
+            if (matchedCustomer.length === 0) {
+                errorMessage.textContent = "Customer not found.";
+            } else {
+                searchResults.style.display = "block";
+                matchedCustomer.forEach(customer => {
+                    const encryptedPassword = "*".repeat(customer.password.length); // Simple encryption for display
+
+                    customerDetailsSection.innerHTML += `
+                        <div class="customer-card">
+                            <p><strong>ID:</strong> ${customer.customer_id}</p>
+                            <p><strong>Name:</strong> ${customer.customer_name}</p>
+                            <p><strong>Email:</strong> ${customer.email}</p>
+                            <p><strong>Address:</strong> ${customer.address}</p>
+                            <p><strong>Contact Number:</strong> ${customer.contact_number}</p>
+                            <p><strong>Password:</strong> ${encryptedPassword}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        // Check if admin is logged in on page load
+        window.onload = isAdminLoggedIn;
+    </script>
+
+</body>
+
+</html>

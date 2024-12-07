@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+  
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('https://www.globalbankingandfinance.com/wp-content/uploads/2022/05/iStock-1165055243.jpg'); /* Replace with your desired background image */
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.5);; /* Transparent background */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.left-section {
+  width: 40%;
+  background-image: url('https://www.shutterstock.com/image-photo/handsome-young-happy-specialist-uses-600nw-1824978266.jpg');
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+
+.left-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.left-section p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.left-section button {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background-color: white;
+  color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.left-section button:hover {
+  background-color: #f1f1f1;
+}
+
+.form-section {
+  width: 60%;
+  padding: 40px;
+  color: #001F3F;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-right: 10px;
+  position: relative;
+}
+
+.form-group i {
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+  color: #001F3F;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #001F3F;
+  background-color: transparent;
+  color: #001F3F;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group button:focus {
+  border-color: #00ff99;
+  box-shadow: 0 0 10px #00ff99;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.hidden {
+  display: none;
+}
+#errorMessage{
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      width: 90%;
+  }
+
+  .left-section {
+      display: none;
+  }
+
+  .form-section {
+      width: 100%;
+      padding: 20px;
+  }
+
+  .form-row {
+      flex-direction: column;
+  }
+  .mobile-login {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+.mobile-login {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+  .form-group {
+      margin-right: 0;
+  }
+}

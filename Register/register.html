@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>ILP Banking</h1>
+            <p>Already registered?</p>
+            <button id="loginBtn" onclick="redirectToLogin()">Login</button>
+        </div>
+        <div class="form-section">
+            <h2>Employee Registration</h2>
+            <form id="registrationForm">
+               
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="firstName" name="firstName" maxlength="50" placeholder="First Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="lastName" name="lastName" maxlength="50" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" maxlength="30" placeholder="Password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" maxlength="30" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <textarea id="address" name="address" maxlength="100" placeholder="Address" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-phone-alt"></i>
+                        <input type="text" id="contactNumber" name="contactNumber" maxlength="10" placeholder="Contact Number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                <button type="button" id="registerBtn">Register</button>
+                </div>
+                </div>
+            </form>
+
+            <div id="acknowledgmentScreen" class="hidden">
+                <h2 style="color: green;">Registration Successful</h2>
+                <p><strong>Employee ID:</strong> <span id="ackEmployeeId"></span></p>
+                <p><strong>Name:</strong> <span id="ackName"></span></p>
+                <p><strong>Email:</strong> <span id="ackEmail"></span></p>
+            </div>
+            <div id="errorMessage"></div>
+            <div class="mobile-login hidden">
+              <a href="../Login/login.html">Already Registered?</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

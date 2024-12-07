@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Grocery Ordering</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+
+<body>
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li class="center"><a href="profile.html">Profile</a></li>
+            <li class="upward"><a href="cart.html">Cart</a></li>
+            <li class="forward logout"><a onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Welcome to Our Online Grocery Store</h1>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search for products...">
+                <button class="search-product" onclick="searchProductByName()">Search</button>
+            </div>
+        </header>
+
+        <!-- Search Results Section -->
+        <section id="search-results" class="hidden">
+            <h2 align="center">Search Results</h2>
+            <div class="product-list" id="search-product-list"></div>
+        </section>
+
+        <!-- Product Listing -->
+        <section id="products">
+            <h2 align="center">Our Products</h2>
+            <div class="product-list">
+                <div class="product" data-name="Maggie">
+                    <img src="images/maggie.jfif" alt="product image">
+                    <h3>Maggie</h3>
+                    <p>Price: ₹10</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Cold Drinks">
+                    <img src="images/Coco Cola.jpg" alt="product image">
+                    <h3>Cold Drinks</h3>
+                    <p>Price: ₹25</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Dettol">
+                    <img src="images/Dettol.jfif" alt="product image">
+                    <h3>Dettol</h3>
+                    <p>Price: ₹15</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Chips">
+                    <img src="images/Lays.jfif" alt="product image">
+                    <h3>Chips</h3>
+                    <p>Price: ₹22</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Harpic">
+                    <img src="images/Harpic.jpg" alt="product image">
+                    <h3>Harpic</h3>
+                    <p>Price: ₹45</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product" data-name="Oreo Biscuits">
+                    <img src="images/Oreo.jfif" alt="product image">
+                    <h3>Oreo Biscuits</h3>
+                    <p>Price: ₹12</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 &COPY; Online Grocery Store</p>
+    </footer>
+
+    <script type="text/javascript">
+        function logout() {
+            localStorage.clear();
+            window.location.href = "../login.html";
+        }
+    
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+        function addToCart(name, price, image) {
+            cart.push({ name: name, price: price, image: image });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(`${name} has been added to the cart.`);
+        }
+    
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const productElement = this.parentElement;
+                const productName = productElement.querySelector('h3').textContent;
+                const productPrice = parseFloat(productElement.querySelector('p').textContent.replace('Price: ₹', ''));
+                const productImage = productElement.querySelector('img').getAttribute('src');
+    
+                addToCart(productName, productPrice, productImage);
+            });
+        });
+    
+        // Search function for products
+        function searchProductByName() {
+            const searchQuery = document.getElementById('search-bar').value.trim().toLowerCase();
+            const productElements = document.querySelectorAll('.product');
+            const searchResultSection = document.getElementById('search-results');
+            const searchProductList = document.getElementById('search-product-list');
+    
+            // Clear previous search results
+            searchProductList.innerHTML = '';
+            searchResultSection.classList.add('hidden');
+    
+            if (searchQuery === "") {
+                searchProductList.innerHTML = '<p>Please enter a product name.</p>';
+                searchResultSection.classList.remove('hidden');
+                return;
+            }
+    
+            let matchedProducts = [];
+    
+            // Loop through all products to find matching names
+            productElements.forEach(product => {
+                const productName = product.dataset.name.toLowerCase();
+                if (productName.includes(searchQuery)) {
+                    matchedProducts.push(product.cloneNode(true));
+                }
+            });
+    
+            if (matchedProducts.length > 0) {
+                searchResultSection.classList.remove('hidden');
+                matchedProducts.forEach(product => {
+                    searchProductList.appendChild(product);
+                });
+            } else {
+                searchResultSection.classList.remove('hidden');
+                searchProductList.innerHTML = '<p>Product not found.</p>';
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://www.igcb.com/wp-content/uploads/blog8.jpg'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.5); /* 50% Transparent Background */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.menu-section {
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker transparent background */
+    background-image: url('https://www.shutterstock.com/image-photo/professional-bank-manager-consulting-financial-600nw-2479065559.jpg');
+    background-size: cover;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.menu-btn {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-btn:hover {
+    background-color: #45a049;
+}
+.hidden {
+    display: none;
+  }
+.form-section {
+    width: 60%;
+    padding: 40px;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-right: 10px;
+    position: relative;
+}
+
+.form-group i {
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.form-group input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    color: white;
+}
+
+textarea {
+    resize: none;
+}
+
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #00ff99;
+    box-shadow: 0 0 10px #00ff99;
+}
+select{
+    color: gray;
+}
+.search-container{
+    display:flex;
+   margin-bottom: 15px; 
+}
+#confirmMessage{
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: red;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .menu-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .menu-btn {
+        width: 100%;
+    }
+}

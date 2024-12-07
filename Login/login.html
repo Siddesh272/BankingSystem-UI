@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login - ILP Banking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h2>Employee Login</h2>
+            <form id="loginForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-id-badge"></i>
+                        <input type="text" id="employeeId" name="employeeId" maxlength="10" placeholder="Employee ID" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" maxlength="30" placeholder="Password" required>
+                    </div>
+                </div>
+
+                <button type="button" id="loginBtn">Login</button>
+            </form>
+
+            <div class="mobile-register hidden">
+                <a href="../Register/register.html">New User?</a>
+               
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h1>ILP Banking</h1>
+            <p>New User?</p>
+            <button id="registerBtn" onclick="redirectToRegister()">Register</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

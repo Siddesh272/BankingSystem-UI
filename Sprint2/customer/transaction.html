@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Page</title>
+    <link rel="stylesheet" href="transaction.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #transaction {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        #total-amount,
+        #order-amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        h3 {
+            margin-top: 15px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #008cba;
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        // Function to load the total amount from localStorage
+        function loadTotalAmount() {
+            const totalAmount = localStorage.getItem("totalAmount");
+            if (totalAmount) {
+                document.getElementById("total-amount").textContent = `Total: $${totalAmount}`;
+                document.getElementById("order-amount").textContent = `Order Total: $${+totalAmount + 5}`;
+            } else {
+                alert("No items in cart, redirecting to homepage...");
+                window.location.href = "homepage.html"; // Redirect to homepage if no amount is found
+            }
+        }
+
+
+        // Function to make a payment
+        function makePayment() {
+            const paymentOption = document.querySelector('input[name="payment-method"]:checked');
+
+            if (!paymentOption) {
+                alert("Please select a payment method.");
+                return;
+            }
+
+            alert(`Payment successful using ${paymentOption.value}! 
+Transaction Id: AXBK12543
+Customer Id: 765485959
+                      `);
+            localStorage.clear(); // Clear the cart and amount after payment
+            window.location.href = "homepage.html"; // Redirect to homepage after payment
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "test.html";
+        }
+
+        window.onload = loadTotalAmount;
+    </script>
+</head>
+
+<body>
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li class="center"><a href="profile.html">Profile</a></li>
+            <li class="upward"><a href="cart.html">Cart</a></li>
+            <li class="forward logout"><a onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <header>
+            <h1>Transaction</h1>
+        </header>
+        <section id="transaction">
+            <h2>Final Pricing Details</h2>
+            <div id="total-amount"></div> <!-- Total amount will be displayed here -->
+            <p>Extra Charges (GST, Delivery, etc.): $5</p>
+            <div id="order-amount"></div> <!-- Order amount will be displayed here -->
+
+            <h3>Select Payment Method</h3>
+            <label><input type="radio" name="payment-method" value="Credit Card"> Credit Card</label><br>
+            <label><input type="radio" name="payment-method" value="Debit Card"> Debit Card</label><br>
+            <label><input type="radio" name="payment-method" value="PayPal"> PayPal</label><br>
+            <label><input type="radio" name="payment-method" value="Cash on Delivery"> Cash on Delivery</label><br>
+
+            <button class="checkout-btn" onclick="makePayment()">Make Payment</button>
+        </section>
+    </main>
+    <footer>
+        <p>2024 Online Grocery Store</p>
+    </footer>
+</body>
+
+</html>

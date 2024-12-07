@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <script type="text/javascript">
+        // Retrieve the cart from localStorage or set an empty array if it doesn't exist
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Function to display cart items
+        function displayCart() {
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = ""; // Clear existing cart display
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                cart.forEach((item, index) => {
+                    cartItems.innerHTML += `
+                        <div class="cart-item">
+			    <img src="${item.image}" alt="${item.name}" class= "cart-image"/>
+                            <h3>${item.name}</h3>
+                            <p>Price: <b>&#8377;${item.price}</b></p>
+                            <button class="checkout-btn" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    `;
+                });
+            }
+            updateTotal();
+        }
+
+        // Function to remove item from the cart
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Remove the item from the cart array
+            localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage
+            displayCart(); // Update the cart display
+        }
+
+        // Update total price
+        function updateTotal() {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById("cart-total").textContent = `Total: ₹${total}`;
+        }
+
+        // Checkout function
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Add items before checkout.");
+            } else {
+                const total = cart.reduce((sum,item) => sum+item.price,0);
+		localStorage.setItem("totalAmount",total.toString());
+		alert("Proceeding to checkout..");
+                window.location.href = "transaction.html"; // Redirect to homepage
+            }
+        }
+
+        window.onload = displayCart; // Display cart items when the page loads
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "../login.html";
+        }
+    </script>
+</head>
+<body>
+    <nav class="nav-container">
+
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li class="center"><a href="profile.html">Profile</a></li>
+            <li class="upward"><a href="cart.html">Cart</a></li>
+            <li class="forward logout"><a onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <header>
+            <h1>Your Cart</h1>
+        </header>
+        <section id="cart">
+            <div id="cart-items"></div>
+            <div id="cart-total"></div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </section>
+    </main>
+    <footer>
+        <p>2024 Online Grocery Store</p>
+    </footer>
+</body>
+</html>

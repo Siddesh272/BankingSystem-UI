@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Grocery Ordering</title>
+	<link rel="stylesheet" type="text/css" href="test.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+  <script type="text/javascript">
+    function validate(){
+	const loginPass = localStorage.getItem("pass");
+	const loginCid = localStorage.getItem("id");
+      const pass = document.getElementById("pswd").value.trim();
+      const cId= document.getElementById("cid").value.trim();
+      if(cId !== loginCid){
+        alert("Incorrect Customer id.");
+        return false;
+      }else if( pass !== loginPass){
+	alert("incorrect password");
+	return false;
+	}
+	else{
+	window.location.href = "homepage.html";
+        return true;
+      }
+    }
+  </script>
+</head>
+<body>
+	<div class="main">
+			<div class="signup">
+				<form onSubmit="event.preventDefault(); validate();" action="#">
+					<label aria-hidden="true">Login</label>
+					<input type="text" maxlength="50" id="cid" name="cid" placeholder="Customer id" required="">
+          				<input type="password" minlength="8" id="pswd" name="pswd" placeholder="password" required="">
+					<button class="signup__btn">Login</button>
+					<a href="test.html">New User ?</a>
+				</form>
+			</div>
+
+	</div>
+</body>
+</html>

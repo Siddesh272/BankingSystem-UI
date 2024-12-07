@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminHome.css">
+</head>
+
+<body>
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li><a href="admin_homepage.html">Home</a></li>
+            <li><a href="logout.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Welcome Admin</h1>
+        </header>
+
+        <!-- Admin Cards -->
+        <section id="admin-dashboard">
+            <div class="dashboard-card" style="background: url(https://media.istockphoto.com/id/1414490312/photo/happy-woman-talking-to-supermarket-worker-while-buying-groceries.jpg?s=612x612&w=0&k=20&c=GjKHRczW9umHDpD89TPuQl_Zm8tpvCx5TP7t0RFGmWA=);background-size: cover;" onclick="location.href='searchcustomer.html';">
+                <h3>View Customers</h3>
+                <p>Check and manage customer details.</p>
+            </div>
+
+            <div class="dashboard-card" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ50vmBWvqyQ_PAyZyL8QefDOAvhxXrdvD3rg&s); background-size: cover;" onclick="location.href='registerProduct.html';">
+                <h3>Register Product</h3>
+                <p>Add new products to the store.</p>
+               
+            </div>
+
+            <div class="dashboard-card" style="background-image: url(https://www.sapogo.com/Upload/Article/2021/7/445628c272a2ef23ebf825412fab229d.jpg); background-size: cover;" onclick="location.href='manageProduct.html';">
+               <h3>View Products</h3>
+                <p>Manage the products available in the store.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 &COPY; Online Grocery Admin Dashboard</p>
+    </footer>
+</body>
+
+</html>

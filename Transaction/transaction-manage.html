@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Management - ILP Banking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="menu-section">
+            <h1>Transaction Management</h1>
+            <p>Record transactions securely and efficiently.</p>
+        </div>
+
+        <div class="form-section">
+            <h2>Enter Transaction Information</h2>
+            <form id="transactionForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-id-badge"></i>
+                        <input type="text" id="transactionId" name="transactionId" placeholder="Transaction ID" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="ssn" name="ssn" placeholder="Customer SSN ID" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="customerName" name="customerName" placeholder="Customer Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-university"></i>
+                        <input type="text" id="accountId" name="accountId" placeholder="Account ID" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="aadharCardNo" name="aadharCardNo" placeholder="Aadhar Card No" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-id-badge"></i>
+                        <input type="text" id="panCardNo" name="panCardNo" placeholder="PAN Card No" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <textarea id="address" name="address" placeholder="Address" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" id="transactionDate" name="transactionDate" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" id="contactNumber" name="contactNumber" placeholder="Contact Number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-exchange-alt"></i>
+                        <select id="modeOfTransaction" name="modeOfTransaction" required>
+                            <option value="" disabled selected>Mode of Transaction</option>
+                            <option value="Online">Online</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Cheque">Cheque</option>
+                            <option value="Card">Card</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <input type="number" id="transactionAmount" name="transactionAmount" placeholder="Amount" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-credit-card"></i>
+                        <select id="creditOrDebit" name="creditOrDebit" required>
+                            <option value="" disabled selected>Credit / Debit</option>
+                            <option value="Credit">Credit</option>
+                            <option value="Debit">Debit</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group">
+                <button type="button" id="submitTransaction">Submit Transaction</button>
+                </div>
+                </div>
+            </form>
+            <div id="errorMessage"></div>
+            <div id="confirmMessage"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

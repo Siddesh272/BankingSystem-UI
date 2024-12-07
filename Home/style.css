@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://www.igcb.com/wp-content/uploads/blog8.jpg'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5); /* 50% transparent background */
+    padding: 40px;
+    border-radius: 8px;
+}
+
+h1 {
+    color: white;
+    margin-bottom: 40px;
+}
+
+.home-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.home-item {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.home-item:hover {
+    background-color: #4CAF50;
+    transform: scale(1.05);
+}
+
+.home-item i {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.home-item p {
+    font-size: 20px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .home-item {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .home-section {
+        flex-direction: column;
+    }
+}

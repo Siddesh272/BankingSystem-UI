@@ -1,0 +1,152 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+  background-image: url('https://www.globalbankingandfinance.com/wp-content/uploads/2022/05/iStock-1165055243.jpg'); /* Replace with your desired background image */
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+    display: flex;
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.5); /* 50% Transparent Background */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.form-section {
+    width: 60%;
+    padding: 40px;
+    color: white;
+}
+
+.info-section {
+  width: 40%;
+  background-image: url('https://media.istockphoto.com/id/1352519860/photo/secure-access-to-personal-information-of-network-users-data-protection-and-secured-internet.jpg?s=612x612&w=0&k=20&c=BPuBjuv-bb0Sy2MKD0Kovbc6QSKk8lNjffvMYtb_-O4=');
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+
+.info-section p {
+    font-size: 18px;
+}
+
+#registerBtn {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: white;
+    color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #001F3F;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-right: 0px;
+    position: relative;
+}
+
+.form-group i {
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+    color:#001F3F;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #001F3F;
+    background-color: transparent;
+    color: #001F3F;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:focus,
+input:focus {
+    border-color: #00ff99;
+    box-shadow: 0 0 10px #00ff99;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .info-section {
+        display: none;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .mobile-register {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+    }
+}

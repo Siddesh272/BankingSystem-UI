@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Registration</title>
+    <link rel="stylesheet" href="registerProduct.css">
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <h1>Register a New Product</h1>
+        </header>
+
+        <section id="product-registration-section">
+            <form id="product-registration-form" enctype="multipart/form-data">
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" placeholder="Enter Product Name" required />
+
+                <label for="product-price">Price</label>
+                <input type="text" id="product-price" placeholder="Enter Product Price" required />
+
+                <label for="product-quantity">Quantity</label>
+                <input type="number" id="product-quantity" placeholder="Enter Product Quantity" required />
+
+                <label for="product-image">Product Image</label>
+                <input type="file" id="product-image" accept="image/*" required />
+
+                <button type="submit" onclick="registerProduct()">Register Product</button>
+
+                <p id="error-message" class="error"></p>
+                <p id="success-message" class="success"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 &COPY; Online Grocery Admin Dashboard</p>
+    </footer>
+
+    <script>
+        function registerProduct() {
+            event.preventDefault(); // Prevent form from submitting
+
+            const productName = document.getElementById("product-name").value.trim();
+            const productPrice = document.getElementById("product-price").value.trim();
+            const productQuantity = document.getElementById("product-quantity").value.trim();
+            const productImage = document.getElementById("product-image").files[0];
+
+            const errorMessage = document.getElementById("error-message");
+            const successMessage = document.getElementById("success-message");
+
+            // Clear previous messages
+            errorMessage.textContent = "";
+            successMessage.textContent = "";
+
+            // Validation
+            if (productName === "" || productPrice === "" || productQuantity === "" || !productImage) {
+                errorMessage.textContent = "Please fill in all fields.";
+                return;
+            }
+
+            if (!/^\d+$/.test(productPrice)) {
+                errorMessage.textContent = "Product price must be a valid number.";
+                return;
+            }
+
+            if (parseInt(productQuantity) < 0) {
+                errorMessage.textContent = "Product quantity cannot be negative.";
+                return;
+            }
+
+            // Simulating product registration and generating unique Product ID
+            const productId = Math.floor(Math.random() * 10000) + 1; // System-generated Product ID
+
+            // Create a product object
+            const product = {
+                product_id: productId,
+                product_name: productName,
+                product_price: productPrice,
+                product_quantity: productQuantity,
+                product_image: URL.createObjectURL(productImage) // Store the image URL temporarily
+            };
+
+            // Here you would add the logic to store the product into the database.
+            // e.g., database call like: saveProductToDatabase(product);
+
+            // Simulating successful product registration
+            successMessage.textContent = "Product registered successfully!";
+
+            // Reset form
+            document.getElementById("product-registration-form").reset();
+        }
+    </script>
+
+</body>
+
+</html>

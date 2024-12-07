@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="manageProduct.css">
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <h1>Product Management</h1>
+        </header>
+
+        <section id="product-management-section">
+            <form id="product-search-form" onsubmit="searchProduct(); return false;">
+                <label for="search-input">Enter Product ID or Name</label>
+                <input type="text" id="search-input" placeholder="Search Product..." required />
+                <button type="submit">Search</button>
+                <p id="error-message"></p>
+            </form>
+
+            <div id="product-details" style="display: none;">
+                <h2>Product Details</h2>
+                <div id="details-container"></div>
+                <button id="update-button" onclick="enableEdit()">Update Product</button>
+                <button id="delete-button" onclick="deleteProduct()">Delete Product</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2024 &COPY; Online Grocery Admin Dashboard</p>
+    </footer>
+
+    <script>
+        let productId;
+
+        function searchProduct() {
+            const searchInput = document.getElementById("search-input").value.trim();
+            const errorMessage = document.getElementById("error-message");
+            const detailsContainer = document.getElementById("details-container");
+            const productDetailsSection = document.getElementById("product-details");
+            detailsContainer.innerHTML = ""; // Clear previous details
+            errorMessage.textContent = ""; // Clear previous error message
+
+            // Simulating a database call
+            const products = [
+                { product_id: 1, product_name: "Apple", product_price: 2, product_quantity: 50, product_image: "apple.jpg" },
+                { product_id: 2, product_name: "Banana", product_price: 1, product_quantity: 100, product_image: "banana.jpg" }
+            ];
+
+            const product = products.find(p => p.product_id == searchInput || p.product_name.toLowerCase() === searchInput.toLowerCase());
+
+            if (product) {
+                productId = product.product_id;
+                detailsContainer.innerHTML = `
+                    <form id="update-form">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" value="${product.product_name}" readonly required />
+
+                        <label for="product-price">Price</label>
+                        <input type="text" id="product-price" value="${product.product_price}" readonly required />
+
+                        <label for="product-quantity">Quantity</label>
+                        <input type="number" id="product-quantity" value="${product.product_quantity}" readonly required />
+
+                        <label for="product-image">Product Image</label>
+                        <img src="${product.product_image}" alt="${product.product_name}" style="width: 100px; height: auto; margin: 10px 0;" />
+                    </form>
+                `;
+                productDetailsSection.style.display = "block";
+            } else {
+                errorMessage.textContent = "Product not found.";
+                productDetailsSection.style.display = "none";
+            }
+        }
+
+        function enableEdit() {
+            const updateForm = document.getElementById("update-form");
+            const inputs = updateForm.querySelectorAll("input[type='text'], input[type='number']");
+            inputs.forEach(input => {
+                input.removeAttribute("readonly"); // Make inputs editable
+            });
+
+            const productImage = document.createElement('input');
+            productImage.type = 'file';
+            productImage.id = 'product-image-upload';
+            productImage.accept = 'image/*';
+            updateForm.appendChild(productImage);
+        }
+
+        function deleteProduct() {
+            // Simulate deleting the product
+            const confirmation = confirm("Are you sure you want to delete this product?");
+            if (confirmation) {
+                alert("Product deleted successfully!");
+                // Here you would add the logic to delete the product from the database.
+                // e.g., deleteProductFromDatabase(productId);
+                document.getElementById("product-details").style.display = "none";
+                document.getElementById("search-input").value = ""; // Clear search input
+            }
+        }
+
+        function updateProduct() {
+            const productName = document.getElementById("product-name").value;
+            const productPrice = document.getElementById("product-price").value;
+            const productQuantity = document.getElementById("product-quantity").value;
+            const productImageUpload = document.getElementById("product-image-upload");
+
+            // Validation
+            if (!productName || !productPrice || !productQuantity) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            if (isNaN(productPrice) || Number(productPrice) < 0) {
+                alert("Price must be a valid positive number.");
+                return;
+            }
+
+            if (isNaN(productQuantity) || Number(productQuantity) < 0) {
+                alert("Quantity must be a valid positive number.");
+                return;
+            }
+
+            // Simulate product update
+            alert("Product updated successfully!");
+
+            // Here you would add the logic to update the product in the database.
+            // e.g., updateProductInDatabase(productId, { productName, productPrice, productQuantity, productImageUpload });
+
+            // Reset the form after successful update
+            document.getElementById("product-details").style.display = "none";
+            document.getElementById("search-input").value = ""; // Clear search input
+        }
+    </script>
+
+</body>
+
+</html>
